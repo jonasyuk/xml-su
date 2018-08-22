@@ -7,7 +7,7 @@
     "lib": "lib"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "nyc ava",
     "lint": "eslint index.js"
   },
   "repository": {
@@ -26,11 +26,16 @@
   "homepage": "https://github.com/jonasyuk/xml-su#readme",
   "devDependencies": {
     "ava": "^0.25.0",
+    "babel-eslint": "^8.2.6",
     "eslint": "^5.4.0",
     "eslint-config-standard": "^11.0.0",
     "eslint-plugin-import": "^2.14.0",
     "eslint-plugin-node": "^7.0.1",
     "eslint-plugin-promise": "^4.0.0",
-    "eslint-plugin-standard": "^3.1.0"
+    "eslint-plugin-standard": "^3.1.0",
+    "nyc": "^12.0.2"
+  },
+  "dependencies": {
+    "lodash": "^4.17.10"
   }
 }
