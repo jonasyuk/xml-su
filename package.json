@@ -1,0 +1,36 @@
+{
+  "name": "xml-su",
+  "version": "1.0.0",
+  "description": "a small and simple xml operation util lib base on nodejs",
+  "main": "index.js",
+  "directories": {
+    "lib": "lib"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "lint": "eslint index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jonasyuk/xml-su.git"
+  },
+  "keywords": [
+    "nodejs",
+    "xml"
+  ],
+  "author": "Jonas",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/jonasyuk/xml-su/issues"
+  },
+  "homepage": "https://github.com/jonasyuk/xml-su#readme",
+  "devDependencies": {
+    "ava": "^0.25.0",
+    "eslint": "^5.4.0",
+    "eslint-config-standard": "^11.0.0",
+    "eslint-plugin-import": "^2.14.0",
+    "eslint-plugin-node": "^7.0.1",
+    "eslint-plugin-promise": "^4.0.0",
+    "eslint-plugin-standard": "^3.1.0"
+  }
+}
