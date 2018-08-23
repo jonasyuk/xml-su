@@ -3,20 +3,14 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-var ava_1 = __importDefault(require("ava"));
-var logger_1 = require("../lib/logger");
-ava_1.default('logger', function (t) {
+const ava_1 = __importDefault(require("ava"));
+const logger_1 = require("../lib/logger");
+ava_1.default('logger', t => {
     logger_1.logger.setLogLevel(logger_1.LOG_LEVEL.debug);
     logger_1.logger.info('infoMsg');
     logger_1.logger.warn('warnMsg');
     logger_1.logger.error('errorMsg');
     logger_1.logger.debug('debugMsg');
-    console.log(logger_1.logger.getLogLevel());
-    console.debug(logger_1.logger.getLogLevel());
     t.pass();
 });
-ava_1.default('logger2', function (t) {
-    console.log(logger_1.logger.getLogLevel());
-    console.debug(logger_1.logger.getLogLevel());
-    t.pass();
-});
+//# sourceMappingURL=logger.test.js.map

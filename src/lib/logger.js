@@ -1,13 +1,5 @@
 "use strict";
-var __importStar = (this && this.__importStar) || function (mod) {
-    if (mod && mod.__esModule) return mod;
-    var result = {};
-    if (mod != null) for (var k in mod) if (Object.hasOwnProperty.call(mod, k)) result[k] = mod[k];
-    result["default"] = mod;
-    return result;
-};
 Object.defineProperty(exports, "__esModule", { value: true });
-var _ = __importStar(require("lodash"));
 var LogLevel;
 (function (LogLevel) {
     LogLevel[LogLevel["info"] = 0] = "info";
@@ -15,42 +7,41 @@ var LogLevel;
     LogLevel[LogLevel["warn"] = 2] = "warn";
     LogLevel[LogLevel["debug"] = 3] = "debug";
 })(LogLevel || (LogLevel = {}));
-var Logger = /** @class */ (function () {
-    function Logger(instance, logLevel) {
+class Logger {
+    constructor(instance, logLevel) {
         this.logInstance = instance;
         this.level = logLevel;
     }
-    Logger.prototype.info = function (infoMsg) {
+    info(infoMsg) {
         if (this.level >= LogLevel.info) {
             this.logInstance.info(infoMsg);
         }
-    };
-    Logger.prototype.error = function (errorMsg) {
+    }
+    error(errorMsg) {
         if (this.level >= LogLevel.error) {
             this.logInstance.error(errorMsg);
         }
-    };
-    Logger.prototype.warn = function (warnMsg) {
+    }
+    warn(warnMsg) {
         if (this.level >= LogLevel.warn) {
             this.logInstance.warn(warnMsg);
         }
-    };
-    Logger.prototype.debug = function (debugMsg) {
+    }
+    debug(infoMsg) {
         if (this.level >= LogLevel.debug) {
-            this.logInstance.debug(debugMsg);
+            this.logInstance.debug(infoMsg);
         }
-    };
-    Logger.prototype.setLogLevel = function (logLevel) {
+    }
+    setLogLevel(logLevel) {
         this.level = logLevel;
-    };
-    Logger.prototype.getLogLevel = function () {
+    }
+    getLogLevel() {
         return this.level;
-    };
-    Logger.prototype.setLogInstance = function (logInstance) {
-        _.isEmpty(logInstance);
+    }
+    setLogInstance(logInstance) {
         this.logInstance = logInstance;
-    };
-    return Logger;
-}());
+    }
+}
 exports.logger = new Logger(console, LogLevel.info);
 exports.LOG_LEVEL = LogLevel;
+//# sourceMappingURL=logger.js.map
