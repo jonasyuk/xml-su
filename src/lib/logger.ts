@@ -2,10 +2,9 @@ import * as _ from "lodash"
 
 
 enum LogLevel {
-    info = 0,
-    error = 1,
-    warn = 2,
-    debug = 3,
+    error = 0,
+    warn = 1,
+    info = 2,
 }
 
 class Logger {
@@ -17,45 +16,49 @@ class Logger {
         this.level = logLevel
     }
 
-    public info(infoMsg: string): void {
+    info(infoMsg: string): void {
         if (this.level >= LogLevel.info) {
             this.logInstance.info(infoMsg)
         }
     }
 
-    public error(errorMsg: string): void {
+    error(errorMsg: string): void {
         if (this.level >= LogLevel.error) {
             this.logInstance.error(errorMsg)
         }
     }
 
-    public warn(warnMsg: string): void {
+    warn(warnMsg: string): void {
         if (this.level >= LogLevel.warn) {
             this.logInstance.warn(warnMsg)
         }
     }
 
-    public debug(debugMsg: string): void {
-        if (this.level >= LogLevel.debug) {
-            this.logInstance.debug(debugMsg)
-        }
-    }
-
-    public setLogLevel(logLevel: LogLevel): void {
+    setLogLevel(logLevel: LogLevel): void {
         this.level = logLevel
     }
 
-    public getLogLevel(): LogLevel {
+    getLogLevel(): LogLevel {
         return this.level
     }
 
-    public setLogInstance(logInstance: any): void {
-        _.isEmpty(logInstance)
-        this.logInstance = logInstance
+    setLogInstance(logInstance: any): void {
+        if (!_.isEmpty(logInstance)) {
+            this.logInstance = logInstance
+        }
     }
+
+    getLogInstance():any{
+        return this.logInstance
+    }
+
+    resetLogInstance():void{
+        this.logInstance = console
+    }
+
 }
 
-export const logger = new Logger(console,LogLevel.info)
+export const logger = new Logger(console, LogLevel.info)
 export const LOG_LEVEL = LogLevel
 
 
