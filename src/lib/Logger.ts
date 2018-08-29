@@ -7,6 +7,10 @@ enum LogLevel {
     info = 2,
 }
 
+interface ILogger {
+
+}
+
 class Logger {
     private logInstance: any
     private level: LogLevel
@@ -48,18 +52,18 @@ class Logger {
         }
     }
 
-    getLogInstance():any{
+    getLogInstance(): any {
         return this.logInstance
     }
 
-    resetLogInstance():void{
+    resetLogInstance(): void {
         this.logInstance = console
     }
 
 }
 
-export const logger = new Logger(console, LogLevel.info)
-export const LOG_LEVEL = LogLevel
+const logger = new Logger(console, LogLevel.info)
+export {logger, LogLevel}
 
 
 

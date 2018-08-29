@@ -1,5 +1,5 @@
 import test from 'ava'
-import {logger, LOG_LEVEL} from '../lib/logger'
+import {logger, LogLevel} from '../lib/Logger'
 const { createLogger, format, transports } = require('winston');
 
 test('logger support log function', t => {
@@ -10,8 +10,8 @@ test('logger support log function', t => {
 })
 
 test('logger set log level function', t => {
-    logger.setLogLevel(LOG_LEVEL.error)
-    t.is(logger.getLogLevel(), LOG_LEVEL.error);
+    logger.setLogLevel(LogLevel.error)
+    t.is(logger.getLogLevel(), LogLevel.error);
 })
 
 test('logger winston log instance',t =>{

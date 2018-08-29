@@ -1,8 +1,6 @@
-interface IXmlElement {
-    rootElement?: IXmlElement;
-    nextElement?: IXmlElement;
-    parentElement?: IXmlElement;
-    childElements?: IXmlElement[];
+import _ from 'lodash'
+
+interface IXmlElementModel {
     prefixBlankStr?: string;
     suffixBlankStr?: string;
     contentPrefixBlankStr?: string;
@@ -10,7 +8,26 @@ interface IXmlElement {
     startNodeStr?: string;
     endNodeStr?: string;
     name?: string;
-    content: string;
+    content?: string;
+}
+
+interface IXmlElement extends IXmlElementModel {
+
+    rootElement?: IXmlElement;
+    parentElement?: IXmlElement;
+    childElements?: IXmlElement[];
+
+    setRootElement(rootElement: IXmlElement): void;
+
+    getRootElement(): IXmlElement;
+
+    setParentElement(parentElement: IXmlElement): void;
+
+    getParentElement(): IXmlElement;
+
+    getChildElements(): IXmlElement[];
+
+    setChildElements(childElements: IXmlElement[]): void;
 
     getElementValue(): string;
 
@@ -24,7 +41,6 @@ interface IXmlElement {
 
 class XmlElement implements IXmlElement {
     rootElement?: IXmlElement;
-    nextElement?: IXmlElement;
     parentElement?: IXmlElement;
     childElements?: IXmlElement[];
     prefixBlankStr?: string;
@@ -34,13 +50,9 @@ class XmlElement implements IXmlElement {
     startNodeStr?: string;
     endNodeStr?: string;
     name?: string;
-    content: string;
+    content?: string;
 
-    constructor(element: IXmlElement) {
-        this.rootElement = element.rootElement;
-        this.nextElement = element.nextElement;
-        this.parentElement = element.parentElement;
-        this.childElements = element.childElements || []
+    constructor(element: IXmlElementModel) {
         this.prefixBlankStr = element.prefixBlankStr || '';
         this.suffixBlankStr = element.suffixBlankStr || '';
         this.contentPrefixBlankStr = element.contentPrefixBlankStr || '';
@@ -49,6 +61,34 @@ class XmlElement implements IXmlElement {
         this.endNodeStr = element.endNodeStr || '';
         this.content = element.content || '';
         this.name = element.name || '';
+    }
+
+    getChildElements(): IXmlElement[] {
+        return this.childElements;
+    }
+
+    setChildElements(childElements: IXmlElement[]): void {
+        if (_.isArray(childElements)) {
+            this.childElements = childElements;
+        } else {
+            this.childElements = [];
+        }
+    }
+
+    setParentElement(parentElement: IXmlElement): void {
+        this.parentElement = parentElement;
+    }
+
+    getParentElement(): IXmlElement {
+        return this.parentElement;
+    }
+
+    setRootElement(rootElement: IXmlElement): void {
+        this.rootElement = rootElement;
+    }
+
+    getRootElement(): IXmlElement {
+        return this.rootElement;
     }
 
     isLeafNode(): boolean {
